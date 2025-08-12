@@ -25,6 +25,6 @@ CREATE TABLE applications (
     application_id SERIAL PRIMARY KEY,
     candidate_id INT REFERENCES candidates(candidate_id),
     job_id INT REFERENCES jobs(job_id),
-    status VARCHAR(50), -- Applied, Interviewing, Hired, Rejected
+    status VARCHAR(50),
     applied_on DATE
 );

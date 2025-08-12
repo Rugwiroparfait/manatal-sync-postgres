@@ -12,11 +12,18 @@ def sync_candidates(csv_file):
                 INSERT INTO candidates (first_name, last_name, email, phone, skills)
                 VALUES (%s, %s, %s, %s, %s)
                 ON CONFLICT (email) DO NOTHING
-            """, (row['first_name'], row['last_name'], row['email'], row['phone'], row['skills']))
+            """, (
+                row['first_name'],
+                row['last_name'],
+                row['email'],
+                row['phone'],
+                row['skills']
+            ))
 
     conn.commit()
     cur.close()
     conn.close()
+    print("✅ Candidates synced successfully!")
 
 if __name__ == "__main__":
-    sync_candidates("../data/mock_candidates.csv")
+    sync_candidates("data/mock_candidates.csv")
